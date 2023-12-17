@@ -1,20 +1,22 @@
+class LoginPage {
+	preencherEmail() {
+		cy.get('#user').type(Cypress.env('user_email'));
+	}
 
-class LoginPage{
+	preencherSenha() {
+		cy.get('input[name=password]').type(Cypress.env('user_password'));
+	}
 
-    preencherEmail(){
-        cy.get('#user').type(Cypress.env('user_email'))
+	clicarEntrar() {
+		cy.get('button[class="btn btn-lg btn-primary"]')
+			.should('be.visible')
+			.click();
+	}
+}
 
-    }
-
-    preencherSenha(){
-        cy.get('input[name=password]').type(Cypress.env('user_password'))
-
-    }
-
-    clicarEntrar(){
-        
-        cy.get('button[class="btn btn-lg btn-primary"]')
-            .should('be.visible').click()
-    }
-
-} export default new LoginPage;
+class LoginErrado {
+	preencherEmailErrado() {
+		cy.get('#user').type('emailErrado@gmail.com');
+	}
+}
+export { LoginPage, LoginErrado };
