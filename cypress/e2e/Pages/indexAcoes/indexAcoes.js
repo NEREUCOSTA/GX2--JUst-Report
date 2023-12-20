@@ -110,3 +110,6 @@ class Acoes {
 }
 
 export default Acoes;
+
+
+cy.get('[view_id="[selectNaturet"] > div > select').select('Meio Ambiente');

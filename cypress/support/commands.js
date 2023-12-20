@@ -23,6 +23,7 @@ Cypress.Commands.add('FecharIframeDeBoasVindas', () => {
 		cy.frameLoaded('@WelcomeIframe');
 		const body = $iframe.contents().find('body');
 		cy.wrap(body)
+			.wait(5000)
 			.find('button>span[class="webix_icon fa fa-close"]')
 			.should('be.visible')
 			.click();
