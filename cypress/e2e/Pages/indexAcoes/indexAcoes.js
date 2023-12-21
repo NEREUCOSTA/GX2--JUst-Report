@@ -23,6 +23,7 @@ class Acoes {
 
 	preencherCampoNatureza() {
 		//Seleciona o campo 'Natureza' e escolhe a primeira opção da lista
+
 		cy.get('div.webix_el_box > select[aria-required="true"]')
 			.should('be.visible')
 			.children('option')
@@ -110,6 +111,3 @@ class Acoes {
 }
 
 export default Acoes;
-
-
-cy.get('[view_id="[selectNaturet"] > div > select').select('Meio Ambiente');
