@@ -5,9 +5,6 @@ class Eventos {
 			'Segurança'
 		);
 
-		//Seleciona o campo 'Identify by' e passa o primeiro da lista
-		// cy.get('div > [view_id="comboIdResponsible"] > div > input')
-
 		// Seleciona o campo 'descrição' e passando uma descrição
 		cy.get('div > [view_id="textareaDescription"] > div').type(
 			'fiação solta no banheiro'
@@ -49,29 +46,22 @@ class Eventos {
 		//Clica no botão 'criar' para enviar o formulário
 		cy.get('button.webix_button').contains('Criar').click();
 
-		cy.get('.webix_popup_text > span');
-		cy.get('.webix_popup_text > span', { timeout: 3000 })
+		// Recebe o popup de evento criado com sucesso, armazena o ID do evento criado e busca na lista de eventos pelo ID recuperado
+		cy.get('.webix_popup_text > span')
 			.invoke('text')
 			.then((textoDoElemento) => {
-				let eventoID;
-				// Usando uma expressão regular para extrair o ID do evento
 				const match = textoDoElemento.match(
 					/Evento (\d+) successfully created/
 				);
-
-				cy.log(match[1]);
-
-				// Verificando se houve correspondência e armazenando o ID do evento
-				eventoID = match ? match[1] : null;
-
-				cy.get('.webix_popup_button > div').contains('OK').click();
-				cy.log(eventoID);
+				const eventoID = match ? match[1] : null;
 				return eventoID;
-			});
-	}
+			})
+			//Fecha o popup de evento criado com sucesso e busca o evento na lista de eventos pelo ID recuperado
+			.then((eventoID) => {
+				cy.get('.webix_popup_button > div').contains('OK').click();
 
-	static validaCriacaoDeEvento(eventoID) {
-		cy.get('div > [role="gridcell"]').contains(`${eventoID}`);
+				cy.get('div > [role="gridcell"]').contains(`${eventoID}`);
+			});
 	}
 }
 

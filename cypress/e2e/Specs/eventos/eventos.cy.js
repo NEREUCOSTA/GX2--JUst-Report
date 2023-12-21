@@ -9,8 +9,6 @@ describe('Acessar o Menu Evento', () => {
 		cy.visit(
 			'https://dev-geon.aperam.com/app/blank/application/occurrence/occurrence'
 		);
-		const eventoID = Eventos.preencherFormularioEventos();
-		cy.log(eventoID);
-		Eventos.validaCriacaoDeEvento(eventoID);
+		Eventos.preencherFormularioEventos();
 	});
 });
