@@ -33,6 +33,23 @@ class Eventos {
 		// Seleciona o o campo 'type of event'
 		cy.get('div > [radio_id="QA"]').click();
 
+		// Seleciona o campo 'Severidade da lesão'
+		cy.get('div > [view_id="selectSeverityOfInjury"] > div > select').select(
+			'Insignificante / Apenas Desconforto'
+		);
+		// Seleciona o campo 'Exposição'
+		cy.get('div > [view_id="selectExposure"] > div > select').select(
+			'1 / Year'
+		);
+		// Seleciona o campo 'Turno'
+		cy.get('div > [view_id="selectShift"] > div > select').select(
+			'<4h / Turno'
+		);
+		// Seleciona o campo 'Probabilidade'
+		cy.get('div > [view_id="selectProbability"] > div > select').select(
+			'Improvável (Possível ignorar)'
+		);
+
 		//Seleciona o campo 'Immediate action'
 		cy.get('div > [view_id="inputImmedianteAction"] > div > input').type(
 			'Ação imediata necessária'
@@ -44,7 +61,7 @@ class Eventos {
 		).type('Proposta de ação para solução do evento');
 
 		//Clica no botão 'criar' para enviar o formulário
-		cy.get('button.webix_button').contains('Criar').click();
+		cy.get('button.webix_button').contains('Concluir evento').click();
 
 		// Recebe o popup de evento criado com sucesso, armazena o ID do evento criado e busca na lista de eventos pelo ID recuperado
 		cy.get('.webix_popup_text > span')
@@ -59,6 +76,24 @@ class Eventos {
 			//Fecha o popup de evento criado com sucesso e busca o evento na lista de eventos pelo ID recuperado
 			.then((eventoID) => {
 				cy.get('.webix_popup_button > div').contains('OK').click();
+				cy.get('.webix_popup_button > div').contains('OK').click();
+
+				cy.intercept(
+					'GET',
+					'https://dev-geon.aperam.com/app/blank/application/tables/event-follow'
+				).as('eventFollowRequest');
+
+				cy.visit(
+					'https://dev-geon.aperam.com/app/blank/application/tables/event-follow'
+				);
+
+				cy.wait('@eventFollowRequest').then((interception) => {
+					// Verifica se a resposta contém uma página HTML
+					expect(interception.response.body).to.include('<html');
+
+					// Espera até que a página esteja completamente carregada
+					cy.document().its('readyState').should('eq', 'complete');
+				});
 
 				cy.get('div > [role="gridcell"]').contains(`${eventoID}`);
 			});
