@@ -1,5 +1,5 @@
-class Eventos {
-	static preencherFormularioEventos() {
+class CriarEventos {
+	static criarEventoSeguranca() {
 		// Seleciona e preenche o campo Nature Ocurrance
 		cy.get('div > [view_id="selectNaturet"] > div > select').select(
 			'Segurança'
@@ -60,7 +60,7 @@ class Eventos {
 			'div > [view_id="textareaProposalAction"] > div > [name="proposalAction"]'
 		).type('Proposta de ação para solução do evento');
 
-		//Clica no botão 'criar' para enviar o formulário
+		//Clica no botão 'concluir evento' para enviar o formulário
 		cy.get('button.webix_button').contains('Concluir evento').click();
 
 		// Recebe o popup de evento criado com sucesso, armazena o ID do evento criado e busca na lista de eventos pelo ID recuperado
@@ -97,7 +97,17 @@ class Eventos {
 
 				cy.get('div > [role="gridcell"]').contains(`${eventoID}`);
 			});
+
+
+	}
+
+	static criarEventoMeioAmbiente(){
+
+	}
+
+	static criarEventoRiscoIndustrial(){
+		
 	}
 }
 
-export default Eventos;
+export default CriarEventos;
