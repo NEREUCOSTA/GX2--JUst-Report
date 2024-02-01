@@ -13,6 +13,14 @@ describe('Acessar o Menu Evento', () => {
 	});
 
 	it('Criar evento Meio Ambiente', () => {
-	   // code here
+		// code here
+	});
+
+	it('Criar evento Risco Industrial', () => {
+		cy.visit(
+			'https://dev-geon.aperam.com/app/blank/application/occurrence/occurrence'
+		);
+
+		CriarEventos.criarEventoRiscoIndustrial();
 	});
 });
