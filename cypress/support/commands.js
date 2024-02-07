@@ -17,7 +17,7 @@ Cypress.Commands.add('FecharIframeDeBoasVindas', () => {
 		'WelcomeIframe'
 	);
 	cy.frameLoaded('@WelcomeIframe');
-	cy.wait(7000); // Aguardar o carregamento do iframe
+	//cy.wait(7000); // Aguardar o carregamento do iframe
 
 	cy.get('@WelcomeIframe').then(($iframe) => {
 		cy.frameLoaded('@WelcomeIframe');
