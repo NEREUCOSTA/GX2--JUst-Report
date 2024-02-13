@@ -1,0 +1,22 @@
+trigger:
+- main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+- task: NodeTool@0
+  inputs:
+    versionSpec: '18.x'
+    checkLatest: true
+
+- script: npm ci
+  displayName: 'Install dependencies'
+
+- script: npx cypress run
+  displayName: 'Run Cypress tests'
+
+- task: PublishPipelineArtifact@1
+  inputs:
+    targetPath: './cypress/reports/html'
+    artifact: 'cypress-reports-html'
