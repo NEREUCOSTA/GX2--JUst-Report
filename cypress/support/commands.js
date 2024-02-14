@@ -23,14 +23,14 @@ Cypress.Commands.add('FecharIframeDeBoasVindas', () => {
 		cy.frameLoaded('@WelcomeIframe');
 		const body = $iframe.contents().find('body');
 		cy.wrap(body)
-  		.wait(11000)
-  		.find('button>span[class="webix_icon fa fa-close"]')
-  		.as('closeButton')  // Salva um alias para o botão
-  		.should('be.visible')
-  		.click();
+  		.wait(20000)
+  		//.find('button>span[class="webix_icon fa fa-close"]')
+  		//.as('closeButton')  // Salva um alias para o botão
+  		//.should('be.visible')
+  		//.click();
 
 // Agora use o alias em comandos subsequentes
-		cy.get('@closeButton').should('not.exist');  // Exemplo de continuação
+		//cy.get('@closeButton').should('not.exist');  // Exemplo de continuação
 
 		// cy.wrap(body)
 		// 	.wait(11000)

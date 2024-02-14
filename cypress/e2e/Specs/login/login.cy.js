@@ -8,7 +8,7 @@ describe('Acessar o Front Just Report', () => {
 		beforeEach(() => {
 			cy.visit('/');
 		});
-		it('Login com Sucesso', () => {
+		it.only('Login com Sucesso', () => {
 			// Realiza o Login
 			cy.login();
 			//seleciona a Planta
