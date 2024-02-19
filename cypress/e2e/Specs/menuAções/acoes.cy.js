@@ -11,6 +11,7 @@ describe('Acessar o Menu Ações', () => {
 
 	
 	it('Criar ações com sucesso', () => {
+		cy.viewport(1920, 1080);
 		//URL do acesso ao iFrame da página de criação de ações
 		cy.visit('https://dev-geon.aperam.com/app/blank/application/actions');
 
