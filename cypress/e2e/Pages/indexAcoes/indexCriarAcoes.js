@@ -36,7 +36,7 @@ class Acoes {
 	preencherResponsavelPelaAcao() {
 		
 		cy.get('div[view_id="comboIdResponsibleForAction"] > div > input').click()
-		cy.get('div[view_id="$suggest9_list"] > div > div').contains('102897 - ACIKGOZ YASIN').should('be.visible').click()
+		cy.get('div[view_id="$suggest9_list"] > div > div').contains('9031079614 - NEREU COSTA NOGUEIRA').should('be.visible').click()
 		
 	}
 
