@@ -13,7 +13,7 @@ describe('Acessar o Front Just Report', () => {
 			cy.login();
 			//seleciona a Planta.
 			cy.selecionaPlanta();
-			//Fecha o iFrame de Boas vindas
+			//Fecha o iFrame de Boas vindas.
 			cy.FecharIframeDeBoasVindas();
 		});
 
