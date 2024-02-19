@@ -4,7 +4,7 @@ class Acoes {
 		Cypress.on('uncaught:exception', (err, runnable) => {
 			return false
 		 })
-		cy.wait(6000);
+		cy.wait(7000);
 		cy.get('div[view_id="comboIdIndentify"] > div > input').should('be.visible').click();
 		cy.get('div[view_id="$suggest10_list"] > div')
   			.contains('div.webix_list_item', '9031079614 - NEREU COSTA NOGUEIRA').should('be.visible')
