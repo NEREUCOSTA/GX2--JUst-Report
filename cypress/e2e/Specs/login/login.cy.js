@@ -9,9 +9,9 @@ describe('Acessar o Front Just Report', () => {
 			cy.visit('/');
 		});
 		it.only('Login com Sucesso', () => {
-			// Realiza o Login
+			// Realiza o Login.
 			cy.login();
-			//seleciona a Planta
+			//seleciona a Planta.
 			cy.selecionaPlanta();
 			//Fecha o iFrame de Boas vindas
 			cy.FecharIframeDeBoasVindas();
@@ -23,7 +23,7 @@ describe('Acessar o Front Just Report', () => {
 		   loginCerto.preencherSenha()
 		   loginCerto.clicarEntrar()
 
-		   
+		  
 		});
 	});
 });
