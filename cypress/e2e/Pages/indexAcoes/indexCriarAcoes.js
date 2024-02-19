@@ -20,7 +20,7 @@ class Acoes {
 	}
 
 	preencherCampoGerencia() {
-		// Seleciona o campo 'Gerência' e escolhe a primeira opção da lista
+		// Seleciona o campo 'Gerência' e escolhe a primeira opção da lista.
 		
 		cy.get('div[view_id="comboIdManagement"]>div>input').click()
 		cy.get('div[view_id="$suggest7_list"] > div [tabindex="0"]').click()
