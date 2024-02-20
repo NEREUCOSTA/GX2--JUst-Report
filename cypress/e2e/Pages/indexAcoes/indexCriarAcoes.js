@@ -63,7 +63,7 @@ class Acoes {
 	}
 
 	submitFormularioDeNovaAcao() {
-		//Clica no butão de envio para realizar o envio da nova ação
+		//Clica no butão de envio para realizar o envio da nova ação.
 		cy.get('button').contains('Criar Ação').should('be.visible').click();
 	}
 
